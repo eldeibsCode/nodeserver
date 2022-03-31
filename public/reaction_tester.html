@@ -1,0 +1,98 @@
+<html>
+    <head>
+        <title>JavaScript</title>
+        <style>
+            
+            body{
+                font-family: sans-serif;
+                
+            }
+            
+            #form{
+                width: 200px;
+                height: 200px;
+                background-color: red;
+                display:none;
+                position: relative;
+            }
+            
+            .bold{
+                font-weight: bold;                
+            }
+            
+        </style>
+        
+        
+    </head>
+    <body>
+        <h1>test your reaction' time</h1>
+        
+        <p>click fast as you can on shape!</p>
+        
+        <p class="bold"> Deine Zeit : <span id="duration"> </span></p>
+        
+        <div id="form"></div>
+        
+        
+        
+        
+        <script type= "text/javascript">
+            
+            function getRandomColor() {
+                var letters = '0123456789ABCDEF';
+                var color = '#';
+                for (var i = 0; i < 6; i++) {
+                    color += letters[Math.floor(Math.random() * 16)];
+                }
+                return color;
+            }
+            
+            
+            var start = new Date().getTime();
+            
+            
+            function makeShapeAppear(){
+                
+                if(Math.random() > 0.5){
+                    document.getElementById("form").style.borderRadius = "50%";
+                }else{
+                    document.getElementById("form").style.borderRadius = "0";
+                }
+                
+                document.getElementById("form").style.backgroundColor= getRandomColor();
+                
+                var hight = Math.random()*200+100;
+                document.getElementById("form").style.hight= hight+"px";
+                var width = Math.random()*200+100;
+                document.getElementById("form").style.width= width+"px";
+                var left = Math.random()*400;
+                document.getElementById("form").style.left = left+"px";
+                var top = Math.random()*400;
+                document.getElementById("form").style.top = top + "px";
+                document.getElementById("form").style.display = 'block';
+                start = new Date().getTime();
+            }
+            
+            
+            
+            function appearAfterDelay(){
+                setTimeout(makeShapeAppear, Math.random()*2000)  
+            }
+            
+            
+            appearAfterDelay();
+            
+            document.getElementById("form").onclick = function(){
+                document.getElementById("form").style.display = 'none';
+                var end = new Date().getTime();
+                var duration = (end - start) / 1000 ;
+                //alert(duration);
+                
+                document.getElementById("duration").innerHTML = duration + "s";
+                
+                appearAfterDelay();
+            }
+        </script>
+        
+    </body>
+</html>
