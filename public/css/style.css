@@ -2,3 +2,13 @@ body{
     background: #333;
     color: #fff;
 }
+.imgDiv{
+    display: flex;
+    justify-content: center;
+}
+.imgDiv img{
+    margin: auto;
+    height: 500px;
+    width: 500px;
+    
+}
